@@ -1,1 +1,4 @@
-# ED2
+# Eestrutura de Dados
+## Repositório contendo os exercícios do meu semestre em ED, que é baseado em C.
+
+* [Lista 1](https://github.com/GustavoGomesDias/ED2/tree/main/Lista1-GustavoGomesDias)
