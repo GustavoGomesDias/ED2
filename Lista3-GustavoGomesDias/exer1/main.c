@@ -1,12 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
-
-void calcula(float l, float *area, float *perimetro){
-	*area = l * l;
-	*perimetro = l * 4;
-}
-
+#include "exer1.h"
 
 int main(int argv, char **argc){
 	float l;

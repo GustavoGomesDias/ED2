@@ -1,13 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "exer2.h"
 
-
-void imprime(int *v, int tam){
-	int i;
-	for(i = 0; i < tam; i++){
-		printf("%d ", v[i]);
-	}
-}
 
 int main(int argv, char **argc){
 	int i, tam;

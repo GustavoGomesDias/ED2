@@ -17,10 +17,3 @@ void print_mat(int *vetor, int linha, int coluna){
 		printf("\n");
 	}
 }
-
-int main(int argv, char **argc){
-	int mat[5][4];
-	preenche((int *) mat, 5, 4);
-	print_mat((int *) mat, 5, 4);
-	return 0;
-}
