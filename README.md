@@ -6,3 +6,5 @@
 * [Lista 3](https://github.com/GustavoGomesDias/ED2/tree/main/Lista3-GustavoGomesDias)
 * [Lista 4](https://github.com/GustavoGomesDias/ED2/tree/main/Lista4-GustavoGomesDias) - Não terminei :(
 * [Lista 5](https://github.com/GustavoGomesDias/ED2/tree/main/Lista5-GustavoGomesDias)
+* [Lista 6](https://github.com/GustavoGomesDias/ED2/tree/main/Lista6-GustavoGomesDias)
+* [Trabalho 1](https://github.com/GustavoGomesDias/ED2/tree/main/Trab1-GustavoGomesDias)
