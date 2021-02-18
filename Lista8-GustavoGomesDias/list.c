@@ -43,6 +43,7 @@ void free_list(List *lst){
         free_cell(tmp);
         tmp = aux;
     }
+    free(lst);
 }
 
 
@@ -68,24 +69,33 @@ int search_list(List *lst, int info){
     return -1;
 }
 
+void insert_last(List *lst, int info){
+    Cell *tmp = lst->last;
+    Cell *new_cell = create_cell(info);
+    if(tmp != NULL){
+        set_next(tmp, new_cell);
+        lst->last = new_cell;
+    }else{
+        lst->first = new_cell;
+        lst->last = new_cell;
+    }
+    lst->size += 1;
+}
+
 
 void insert_list(List *lst, int info, int pos){
     Cell *tmp = lst->first;
     Cell *new_cell = create_cell(info);
-
     if(tmp == NULL){
         lst->first = new_cell;
         lst->last = new_cell;
-        lst->size += 1;
     }else{
         if(pos <= 0){
             set_next(new_cell, tmp);
             lst->first = new_cell;
-            lst->size += 1;
         }else if(pos >= size_list(lst)){
             set_next(lst->last, new_cell);
             lst->last = new_cell;
-            lst->size += 1;
         }else{
             int i = 0;
             Cell *aux;
@@ -96,7 +106,91 @@ void insert_list(List *lst, int info, int pos){
             }
             set_next(aux, new_cell);
             set_next(new_cell, tmp);
-            lst->size += 1;
         }
     }
+    lst->size += 1;
+}
+
+
+void insert_last2(List *lst, int info){
+    insert_list(lst, info, size_list(lst));
+
+}
+
+void insert_first2(List *lst, int info){
+    insert_list(lst, info, 0);
+}
+
+void remove_list(List *lst, int pos){
+    int i = 0;
+    Cell *tmp = lst->first;
+    Cell *aux, *aux2;
+    
+    if(pos == 0){
+        aux = lst->first;
+        lst->first = get_next(aux);
+        free_cell(aux);
+    }else if(pos >= size_list(lst) - 1){
+        while(tmp != lst->last){
+            aux = tmp;
+            tmp = get_next(tmp);
+        }
+        aux2 = lst->last;
+        free_cell(aux2);
+        lst->last = aux;
+        set_next(aux, NULL);
+        
+    }else{
+        while(i != pos){
+            aux = tmp;
+            tmp = get_next(tmp);
+            i++;
+        }
+        aux2 = get_next(tmp);
+        set_next(aux, aux2);
+        free_cell(tmp);
+    }
+    lst->size -=1;
+}
+
+void remove_elem(List *lst, int info){
+    remove_list(lst, search_list(lst, info));
+}
+
+
+void insert_ordered(List *lst, int info){
+    Cell *tmp = lst->first;
+    Cell *aux;
+    Cell *new_cell = create_cell(info);
+    
+    if(tmp == NULL){
+        lst->first = new_cell;
+        lst->last = new_cell;
+    }else if(get_info(tmp) == info){
+        set_next(new_cell, tmp);
+        lst->first = new_cell;
+    }else if(get_info(lst->last) == info){
+        set_next(lst->last, new_cell);
+        lst->last = new_cell;
+    }else{
+        while(get_info(tmp) < info && get_next(tmp) != NULL){
+            aux = tmp;
+            tmp = get_next(tmp);
+        }
+        if(lst->first == tmp){
+            if(get_info(tmp) > info){
+                set_next(new_cell, tmp);
+                lst->first = new_cell;
+            }else{
+                set_next(tmp, new_cell);
+            }
+        }else if(get_next(tmp) == NULL){
+            set_next(tmp, new_cell);
+            lst->last = new_cell;
+        }else{
+            set_next(aux, new_cell);
+            set_next(new_cell, tmp);
+        }
+    }
+    lst->size += 1;
 }

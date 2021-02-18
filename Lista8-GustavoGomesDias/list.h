@@ -19,6 +19,18 @@ int size_list(List *lst);
 
 int search_list(List *lst, int info);
 
+void insert_last(List *lst, int info);
+
 void insert_list(List *lst, int info, int pos);
+
+void insert_last2(List *lst, int info);
+
+void insert_first2(List *lst, int info);
+
+void remove_list(List *lst, int pos);
+
+void remove_elem(List *lst, int info);
+
+void insert_ordered(List *lst, int info);
 
 #endif
