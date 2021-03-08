@@ -9,6 +9,7 @@ int main(){
     insert_list(lst, 3, 2);
     insert_list(lst, 4, 3);
     insert_list(lst, 5, 4);
+	insert_list(lst, 18, 2);
 
     printf("Size - %d\n", size(lst));
 
