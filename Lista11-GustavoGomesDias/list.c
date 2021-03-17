@@ -26,7 +26,9 @@ void insert_list(List *lst, info_t info, int pos){
     }else{
     lst->info[pos] = info;
     }
-    lst->size += 1;
+    if((lst->size - 1) <= pos){
+        lst->size += 1;
+    }
 }
 
 void remove_elem(List *lst, int pos){
