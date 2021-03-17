@@ -13,8 +13,18 @@ int main(){
     insert_list(lst, 7, 6);
     insert_list(lst, 8, 7);
     insert_list(lst, 9, 8);
+
+    print_lst(lst);
+
+    printf("\n");
+
+
     insert_list(lst, 10, 9);
+    insert_list(lst, 18, 1);
+    insert_list(lst, 18, 2);
+    insert_list(lst, 18, 3);
     insert_list(lst, 18, 4);
+    insert_list(lst, 18, 5);
 
     printf("Size - %d\n", size(lst));
 
@@ -22,8 +32,8 @@ int main(){
 
     printf("\n");
 
-    if(search_elem(lst, 6) != -1){
-        printf("Posição do elemeneto - %d", search_elem(lst, 6));
+    if(search_elem(lst, 18) != -1){
+        printf("Posição do elemeneto - %d", search_elem(lst, 18));
     }else{
         printf("Elemento não está na lista!");
     }

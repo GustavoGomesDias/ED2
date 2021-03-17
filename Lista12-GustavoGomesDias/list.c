@@ -20,7 +20,6 @@ int size(List *lst){
 }
 
 void insert_list(List *lst, info_t info, int pos){
-    
     if(pos <= 0){
         lst->info[0] = info;
     }else if(pos >= lst->size){
@@ -33,29 +32,32 @@ void insert_list(List *lst, info_t info, int pos){
         lst->size += 1;
     }
     if((lst->size > (int) (lst->size_ini * 0.75))){
-        int i;
-        info_t *copy = malloc(sizeof(info_t) * (lst->size_ini * 2));
-        for(i = 0; i < lst->size; i++){
-            copy[i] = lst->info[i];
-        }
-        free(lst->info);
-        lst->info = NULL;
-        lst->info = copy;
+        // int i;
+        // info_t *copy = malloc(sizeof(info_t) * (lst->size_ini * 2));
+        // for(i = 0; i < lst->size; i++){
+        //     copy[i] = lst->info[i];
+        // }
+        // free(lst->info);
+        // lst->info = NULL;
+        // lst->info = copy;
+        lst->info = (info_t *) realloc(lst->info, (sizeof(info_t) * (lst->size_ini * 2)));
         lst->size_ini *= 2;
     }
     if((lst->size < (int) (lst->size_ini * 0.25))){
-        int i;
-        info_t *copy = malloc(sizeof(info_t) * (lst->size_ini/2));
-        for(i = 0; i < lst->size; i++){
-            copy[i] = lst->info[i];
-        }
-        free(lst->info);
-        lst->info = NULL;
-        lst->info = copy;
+        // int i;
+        // info_t *copy = malloc(sizeof(info_t) * (lst->size_ini/2));
+        // for(i = 0; i < lst->size; i++){
+        //     copy[i] = lst->info[i];
+        // }
+        // free(lst->info);
+        // lst->info = NULL;
+        // lst->info = copy;
+        lst->info = (info_t *) realloc(lst->info, (sizeof(info_t) * (lst->size_ini / 2)));
         lst->size_ini /= 2;
     }
     
 }
+
 
 void remove_elem(List *lst, int pos){
     if(pos < 0 || pos > lst->size){
@@ -68,25 +70,27 @@ void remove_elem(List *lst, int pos){
         lst->size -= 1;
     }
     if((lst->size > (int) (lst->size_ini * 0.75))){
-        int i;
-        info_t *copy = malloc(sizeof(info_t) * (lst->size_ini * 2));
-        for(i = 0; i < lst->size; i++){
-            copy[i] = lst->info[i];
-        }
-        free(lst->info);
-        lst->info = NULL;
-        lst->info = copy;
+        // int i;
+        // info_t *copy = malloc(sizeof(info_t) * (lst->size_ini * 2));
+        // for(i = 0; i < lst->size; i++){
+        //     copy[i] = lst->info[i];
+        // }
+        // free(lst->info);
+        // lst->info = NULL;
+        // lst->info = copy;
+        lst->info = (info_t *) realloc(lst->info, (sizeof(info_t) * (lst->size_ini * 2)));
         lst->size_ini *= 2;
     }
     if((lst->size < (int) (lst->size_ini * 0.25))){
-        int i;
-        info_t *copy = malloc(sizeof(info_t) * (lst->size_ini/2));
-        for(i = 0; i < lst->size; i++){
-            copy[i] = lst->info[i];
-        }
-        free(lst->info);
-        lst->info = NULL;
-        lst->info = copy;
+        // int i;
+        // info_t *copy = malloc(sizeof(info_t) * (lst->size_ini/2));
+        // for(i = 0; i < lst->size; i++){
+        //     copy[i] = lst->info[i];
+        // }
+        // free(lst->info);
+        // lst->info = NULL;
+        // lst->info = copy;
+        lst->info = (info_t *) realloc(lst->info, (sizeof(info_t) * (lst->size_ini * 2)));
         lst->size_ini /= 2;
     }
 }
