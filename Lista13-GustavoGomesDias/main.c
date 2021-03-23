@@ -21,7 +21,6 @@ int main(int argc, char **argv){
             int k = atoi(argv[cont]);
             push(stk, &k, print_int);
         }
-        peek(stk);
     }
     
     
