@@ -12,4 +12,6 @@ void pop(Stack *stk);
 
 void peek(Stack *stk);
 
+void free_stack(Stack *stk);
+
 #endif

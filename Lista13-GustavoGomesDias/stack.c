@@ -44,3 +44,17 @@ void peek(Stack *stk){
         printf("Pilha vazia!\n");
     }
 }
+
+void free_stack(Stack *stk){
+    Cell *tmp = stk->top;
+    if(tmp != NULL){
+        while(get_next(tmp) != NULL){
+            tmp = get_next(tmp);
+            free(tmp);
+        }
+        free(stk->top);
+        free(stk);
+    }else{
+        printf("Lista vazia!");
+    }
+}
