@@ -4,4 +4,6 @@
 
 typedef struct List List;
 
+List *create_list();
+
 #endif
