@@ -6,4 +6,7 @@ typedef struct List List;
 
 List *create_list();
 
+void insert_line(List *lst, float info, int l, int c);
+void insert_column(List *lst, float info, int l, int c);
+
 #endif
