@@ -8,10 +8,11 @@ struct Cell{
     struct Cell *next_l, *next_c;
 };
 
-Cell *create_cell(){
+Cell *create_cell(float info, int line, int column){
     Cell *new_cell = (Cell *) malloc(sizeof(Cell));
-    new_cell->line = 0;
-    new_cell->column = 0;
+    new_cell->info = info;
+    new_cell->line = line;
+    new_cell->column = column;
     new_cell->next_l = NULL;
     new_cell->next_c = NULL;
 
@@ -34,7 +35,7 @@ void set_next_l(Cell *arg1, Cell *arg2){
     return arg1->next_l;
 }
 
-int get_linha(Cell *arg1){
+int get_line(Cell *arg1){
 	return arg1->line;
 	// Pega a linha
 }
@@ -44,7 +45,7 @@ void set_line(Cell *arg1, int line){
 	// Seta a linha
 }
 
-int get_coluna(Cell *arg1){
+int get_column(Cell *arg1){
 	return arg1->column;
 	// Pega a coluna
 }

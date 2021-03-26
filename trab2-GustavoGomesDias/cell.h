@@ -3,15 +3,15 @@
 
 typedef struct Cell Cell;
 
-Cell *create_cell();
+Cell *create_cell(float info, int line, int column);
 
 float get_info(Cell *arg1);
 void set_info(Cell *arg1, float info);
 
-int get_linha(Cell *arg1);
+int get_line(Cell *arg1);
 void set_line(Cell *arg1, int line);
 
-int get_coluna(Cell *arg1);
+int get_column(Cell *arg1);
 void set_column(Cell *arg1, int columns);
 
 Cell *get_next_l(Cell *arg1);
