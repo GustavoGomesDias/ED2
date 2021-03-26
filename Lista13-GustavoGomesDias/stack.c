@@ -45,6 +45,49 @@ void peek(Stack *stk){
     }
 }
 
+void calc(Stack *stk){
+    if(stk->len == 3){
+        int *i = ((int *) get_info(stk->top));
+        int *i2 = (int *) get_info(get_next(stk->top));
+        printf("%d", *i);
+        printf("%d", *i2);
+        Cell *tmp = get_next(stk->top);
+        char *c = (char *) get_info(get_next(tmp));
+        if(&c  == '+'){
+            printf("aqui");
+        }else{
+            printf("%d", ((*i) * (*i2)));
+        }
+    }
+    // else{
+    //     int *i = ((int *) get_info(stk->top));
+    //     int *i2 = (int *) get_info(get_next(stk->top));
+    //     Cell *tmp = get_next(stk->top);
+    //     int result = 0;
+        
+    //     char *c = (char *) get_info(get_next(tmp));
+    //     if(&c  == '+'){
+    //         result = *i + *i2;
+    //     }else{
+    //         result = *i * *i2;
+    //     }
+
+    //     Cell *tmp2 = get_next(get_next(tmp));
+    //     while(get_next(tmp2) != NULL){
+    //         char *c = (char *) get_info(get_next(tmp));
+    //         if(*c == '+'){
+    //             int *k = (int *) get_info(get_next(get_next(tmp2)));
+    //             result += *k; 
+    //         }else{
+    //             int *k = (int *) get_info(get_next(get_next(tmp2)));
+    //             result *= *k;
+    //         }
+    //         tmp2 = get_next(tmp2);
+    //     }
+    //     printf("%d", result);
+    // }
+}
+
 void free_stack(Stack *stk){
     Cell *tmp = stk->top;
     if(tmp != NULL){

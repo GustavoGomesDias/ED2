@@ -8,6 +8,7 @@ struct cell{
     void *info;
     struct cell *next;
     void (*print)();
+    void (*get_func)();
 };
 
 Cell* create_cell(void *info, void (*print)()){
@@ -26,8 +27,17 @@ void print_char(char *info){
     printf("%s", info);
 }
 
+// int get_int(Cell *arg1){
+//     return &arg1->info;
+// }
+
+// char get_char(Cell *arg1){
+//     return &arg1->info;
+// }
+
+
 void *get_info(Cell *arg1){
-    return arg1->info;
+    return &arg1->info;
 }
 
 void set_info(Cell *arg1, void* info){
