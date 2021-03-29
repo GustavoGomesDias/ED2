@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cell.h"
 #include "queue.h"
 
 struct queue{
@@ -73,4 +72,8 @@ void free_queue(Queue *queue){
     free(queue->start);
     free(queue->end);
     free(queue);
+}
+
+int size(Queue *queue){
+    return queue->tam;
 }

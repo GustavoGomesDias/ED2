@@ -14,6 +14,8 @@ void print(Queue *queue);
 
 void peek(Queue *queue);
 
+void size(Queue *queue);
+
 void free_queue(Queue *queue);
 
 #endif

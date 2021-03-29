@@ -16,4 +16,6 @@ void peek(Queue *queue);
 
 void free_queue(Queue *queue);
 
+int size(Queue *queue);
+
 #endif
