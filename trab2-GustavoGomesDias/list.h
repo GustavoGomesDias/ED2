@@ -9,4 +9,8 @@ List *create_list();
 void insert_line(List *lst, float info, int l, int c);
 void insert_column(List *lst, float info, int l, int c);
 
+Cell *get_start(List *lst);
+
+void print_list(Cell *start);
+
 #endif

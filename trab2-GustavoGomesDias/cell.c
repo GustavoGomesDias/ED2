@@ -24,7 +24,7 @@ float get_info(Cell *arg1){
 }
 
 void set_info(Cell *arg1, float info){
-    return arg1->info = info;
+    arg1->info = info;
 }
 
 Cell *get_next_l(Cell *arg1){
@@ -32,7 +32,7 @@ Cell *get_next_l(Cell *arg1){
 }
 
 void set_next_l(Cell *arg1, Cell *arg2){
-    return arg1->next_l;
+    arg1->next_l = arg2;
 }
 
 int get_line(Cell *arg1){
@@ -60,7 +60,7 @@ Cell *get_next_c(Cell *arg1){
 }
 
 void set_next_c(Cell *arg1, Cell *arg2){
-    return arg1->next_c;
+    arg1->next_c = arg2;
 }
 
 void free_cell(Cell *arg1){
