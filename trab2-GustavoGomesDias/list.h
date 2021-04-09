@@ -11,4 +11,8 @@ List *insert_column(List *lst, float info, int l, int c);
 
 void print_list(List *lst);
 
+void free_elemLine(List *lst, int column);
+
+void free_elemColumn(List *lst, int line);
+
 #endif

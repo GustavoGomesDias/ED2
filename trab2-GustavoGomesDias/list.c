@@ -74,15 +74,15 @@ void print_list(List *lst){
     Cell *tmp = lst;
     while(tmp != NULL){
         printf("%d; %d; %f\n", get_line(tmp), get_column(tmp), get_info(tmp));
-        tmp = get_next_c(tmp);
+        tmp = get_next_l(tmp);
     }
 }
 
 void free_elemLine(List *lst, int column){
     Cell *tmp = lst;
-    if(get_collumn(tmp) == column){
+    if(get_column(tmp) == column){
         if(get_next_l(tmp) != NULL){
-            lst = get_next_l(tmp)
+            lst = get_next_l(tmp);
         }else{
             lst = NULL;
         }
@@ -107,7 +107,7 @@ void free_elemColumn(List *lst, int line){
     Cell *tmp = lst;
     if(get_line(tmp) == line){
         if(get_next_l(tmp) != NULL){
-            lst = get_next_l(tmp)
+            lst = get_next_l(tmp);
         }else{
             lst = NULL;
         }
