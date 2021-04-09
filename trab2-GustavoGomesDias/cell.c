@@ -3,12 +3,12 @@
 #include "cell.h"
 
 struct Cell{
-    float info;
+    info_t info;
     int line, column;
     struct Cell *next_l, *next_c;
 };
 
-Cell *create_cell(float info, int line, int column){
+Cell *create_cell(info_t info, int line, int column){
     Cell *new_cell = (Cell *) malloc(sizeof(Cell));
     new_cell->info = info;
     new_cell->line = line;
@@ -19,14 +19,15 @@ Cell *create_cell(float info, int line, int column){
     return new_cell;
 }
 
-float get_info(Cell *arg1){
+info_t get_info(Cell *arg1){
     return arg1->info;
 }
 
-void set_info(Cell *arg1, float info){
+void set_info(Cell *arg1, info_t info){
     arg1->info = info;
 }
 
+// Get/set para o próximo na lista.
 Cell *get_next_l(Cell *arg1){
     return arg1->next_l;
 }
@@ -34,20 +35,21 @@ Cell *get_next_l(Cell *arg1){
 void set_next_l(Cell *arg1, Cell *arg2){
     arg1->next_l = arg2;
 }
+//
 
+// Get/set para linha da célula
 int get_line(Cell *arg1){
 	return arg1->line;
-	// Pega a linha
 }
 
 void set_line(Cell *arg1, int line){
 	arg1->line = line;
-	// Seta a linha
 }
+// 
 
+// Get/set para coluna da célula
 int get_column(Cell *arg1){
 	return arg1->column;
-	// Pega a coluna
 }
 
 void set_column(Cell *arg1, int columns){
@@ -55,6 +57,7 @@ void set_column(Cell *arg1, int columns){
 	// Seta a coluna
 }
 
+// Get/set para o próximo na coluna
 Cell *get_next_c(Cell *arg1){
     return arg1->next_c;
 }
@@ -62,6 +65,7 @@ Cell *get_next_c(Cell *arg1){
 void set_next_c(Cell *arg1, Cell *arg2){
     arg1->next_c = arg2;
 }
+//
 
 void free_cell(Cell *arg1){
     free(arg1);

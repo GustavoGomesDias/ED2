@@ -1,6 +1,8 @@
 #ifndef __cell_h__
 #define __cell_h__
 
+typedef info_t float;
+
 typedef struct Cell Cell;
 
 Cell *create_cell(float info, int line, int column);
