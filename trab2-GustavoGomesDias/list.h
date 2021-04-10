@@ -6,8 +6,8 @@ typedef Cell List;
 
 List *create_list();
 
-List *insert_line(List *lst, float info, int l, int c);
-List *insert_column(List *lst, float info, int l, int c);
+List *insert_line(List *lst, info_t info, int l, int c);
+List *insert_column(List *lst, info_t info, int l, int c);
 
 void print_list(List *lst);
 

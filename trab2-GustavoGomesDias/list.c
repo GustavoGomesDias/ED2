@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include "list.h"
 
-
-
-
 List *create_list(){
     return NULL;
 }
@@ -83,23 +80,24 @@ void free_elemLine(List *lst, int column){
     if(get_column(tmp) == column){
         if(get_next_l(tmp) != NULL){
             lst = get_next_l(tmp);
+            free_cell(tmp);
         }else{
-            lst = NULL;
+            free_cell(tmp);
         }
-        free_cell(tmp);
     }else{
         Cell *aux;
         while(get_column(tmp) != column && tmp != NULL){
             aux = tmp;
             tmp = get_next_l(tmp);
         }
-
-        if(get_next_l(tmp) != NULL){
-            set_next_l(aux, get_next_l(tmp));
-        }else{
-            set_next_l(aux, NULL);
+        if(get_column(tmp) == column){
+            if(get_next_l(tmp) != NULL){
+                set_next_l(aux, get_next_l(tmp));
+            }else{
+                set_next_l(aux, NULL);
+            }
+            free_cell(tmp);
         }
-        free_cell(tmp);
     }
 }
 
