@@ -28,12 +28,7 @@ Matrix *create_header(int dimension){
 Matrix *insert_lineM(Matrix *mat, int line, int column, info_t info){
     // Retira se for 0 como entrada
     if(info == 0){
-        if(get_next_l(mat->head_l[line]) != NULL){
-            List *lst = get_next_l(mat->head_l[line]);
-            
-            // Tenho que criar um free na list pra manejar os heads
-            // free_elemLine(lst, column);
-        }
+        remove_mat(mat, line, column);
         return mat;
     }
     
@@ -62,12 +57,7 @@ Matrix *insert_lineM(Matrix *mat, int line, int column, info_t info){
 Matrix *insert_columnM(Matrix *mat, int line, int column, info_t info){
     // Retira se for 0 como entrada
     if(info == 0){
-        if(get_next_c(mat->head_c[column]) != NULL){
-            List *lst = get_next_c(mat->head_c[column]);
-            
-            // Tenho que criar um free na list pra manejar os heads
-            // free_elemcolumn(lst, column);
-        }
+        remove_mat(mat, line, column);
         return mat;
     }
     
@@ -91,6 +81,51 @@ Matrix *insert_columnM(Matrix *mat, int line, int column, info_t info){
     lst = insert_column(lst, info, line, column);
     return mat;    
     
+}
+
+void remove_line(Matrix *mat, int line, int column){
+    Cell *tmp = mat->head_l[line];
+    if(get_next_l(tmp) == NULL){
+        free_cell(tmp);
+        mat->head_l[line] = NULL;   
+    }else{
+        if(get_line(tmp) == line && get_column(tmp) == column && get_next_l(tmp) != NULL){
+            List *lst = tmp;
+            free_line(lst, column);
+            mat->head_l[line] = lst;
+        }else{
+            List *lst = tmp;
+            free_line(lst, column);
+        }
+    }
+}
+
+void remove_column(Matrix *mat, int line, int column){
+    Cell *tmp = mat->head_c[column];
+    if(get_next_c(tmp) == NULL){
+        free_cell(tmp);
+        mat->head_c[column] = NULL;   
+    }else{
+        if(get_line(tmp) == line && get_column(tmp) == column && get_next_c(tmp) != NULL){
+            List *lst = tmp;
+            free_column(lst, line);
+            mat->head_c[column] = lst;
+        }else{
+            List *lst = tmp;
+            free_column(lst, line);
+        }
+    }
+}
+
+
+void remove_mat(Matrix *mat, int line, int column){
+    remove_line(mat, line, column);
+    remove_column(mat, line, column);
+}
+
+void insert_mat(Matrix *mat, int line, int column, info_t info){
+    mat = insert_lineM(mat, line, column, info);
+    mat = insert_columnM(mat, line, column, info);
 }
 
 void print_matrix(Matrix *mat){

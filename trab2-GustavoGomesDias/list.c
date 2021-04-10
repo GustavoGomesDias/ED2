@@ -75,7 +75,7 @@ void print_list(List *lst){
     }
 }
 
-void free_elemLine(List *lst, int column){
+void free_line(List *lst, int column){
     Cell *tmp = lst;
     if(get_column(tmp) == column){
         if(get_next_l(tmp) != NULL){
@@ -101,27 +101,29 @@ void free_elemLine(List *lst, int column){
     }
 }
 
-void free_elemColumn(List *lst, int line){
+void free_column(List *lst, int line){
     Cell *tmp = lst;
     if(get_line(tmp) == line){
-        if(get_next_l(tmp) != NULL){
-            lst = get_next_l(tmp);
+        if(get_next_c(tmp) != NULL){
+            lst = get_next_c(tmp);
+            free_cell(tmp);
         }else{
-            lst = NULL;
+            free_cell(tmp);
         }
-        free_cell(tmp);
     }else{
         Cell *aux;
         while(get_line(tmp) != line && tmp != NULL){
             aux = tmp;
-            tmp = get_next_l(tmp);
+            tmp = get_next_c(tmp);
         }
 
-        if(get_next_l(tmp) != NULL){
-            set_next_l(aux, get_next_l(tmp));
-        }else{
-            set_next_l(aux, NULL);
+        if(get_line(tmp) == line){
+            if(get_next_c(tmp) != NULL){
+                set_next_c(aux, get_next_l(tmp));
+            }else{
+                set_next_c(aux, NULL);
+            }
+            free_cell(tmp);
         }
-        free_cell(tmp);
     }
 }

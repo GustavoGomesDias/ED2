@@ -15,4 +15,12 @@ Matrix *insert_columnM(Matrix *mat, int line, int column, info_t info);
 
 void print_matrix(Matrix *mat);
 
+void remove_line(Matrix *mat, int line, int column);
+
+void remove_column(Matrix *mat, int line, int column);
+
+void remove_mat(Matrix *mat, int line, int column);
+
+void insert_mat(Matrix *mat, int line, int column, info_t info);
+
 #endif
