@@ -136,4 +136,18 @@ void print_matrix(Matrix *mat){
             print_list(get_next_l(tmp));
         }
     }
-}   
+}
+
+void free_mat(Matrix *mat){
+    int i;
+    for(i = 1; i <= mat->dimension; i++){
+        Cell *tmp = mat->head_l[i];
+        while(tmp != NULL){
+            remove_mat(mat, get_line(tmp), get_column(tmp));
+            tmp = get_next_l(tmp);
+        }
+    }
+    free(mat->head_l);
+    free(mat->head_c);
+    free(mat);
+}

@@ -23,4 +23,6 @@ void remove_mat(Matrix *mat, int line, int column);
 
 void insert_mat(Matrix *mat, int line, int column, info_t info);
 
+void free_mat(Matrix *mat);
+
 #endif
