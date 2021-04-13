@@ -25,4 +25,6 @@ void insert_mat(Matrix *mat, int line, int column, info_t info);
 
 void free_mat(Matrix *mat);
 
+Matrix *sun(Matrix *mat1, Matrix *mat2);
+
 #endif

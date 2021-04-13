@@ -26,12 +26,6 @@ Matrix *create_header(int dimension){
 
 // l = linha e c = coluna
 Matrix *insert_lineM(Matrix *mat, int line, int column, info_t info){
-    // Retira se for 0 como entrada
-    if(info == 0){
-        remove_mat(mat, line, column);
-        return mat;
-    }
-    
     Cell *tmp = get_next_l(mat->head_l[line]);
 
     if(tmp == NULL){    
@@ -44,7 +38,7 @@ Matrix *insert_lineM(Matrix *mat, int line, int column, info_t info){
     if(tmp != NULL && get_column(tmp) > column){
         List *lst = tmp;
         lst = insert_line(lst, info, line, column);
-        mat->head_l[line] = lst;
+        set_next_l(mat->head_l[line], lst);
         return mat;
     }
 
@@ -55,12 +49,6 @@ Matrix *insert_lineM(Matrix *mat, int line, int column, info_t info){
 }
 
 Matrix *insert_columnM(Matrix *mat, int line, int column, info_t info){
-    // Retira se for 0 como entrada
-    if(info == 0){
-        remove_mat(mat, line, column);
-        return mat;
-    }
-    
     Cell *tmp = get_next_c(mat->head_c[column]);
 
     if(tmp == NULL){    
@@ -124,8 +112,13 @@ void remove_mat(Matrix *mat, int line, int column){
 }
 
 void insert_mat(Matrix *mat, int line, int column, info_t info){
-    mat = insert_lineM(mat, line, column, info);
-    mat = insert_columnM(mat, line, column, info);
+    // Retira se for 0 como entrada
+    if(info == 0){
+        remove_mat(mat, line, column);
+    }else{
+        mat = insert_lineM(mat, line, column, info);
+        mat = insert_columnM(mat, line, column, info);
+    }
 }
 
 void print_matrix(Matrix *mat){
@@ -151,3 +144,127 @@ void free_mat(Matrix *mat){
     free(mat->head_c);
     free(mat);
 }
+
+Matrix *sun(Matrix *mat1, Matrix *mat2){
+    int i;
+    int dimension =  mat1->dimension;
+    Matrix *result = create_header(dimension);
+
+    for(i = 1; i <= dimension; i++){
+        Cell *tmp = get_next_l(mat1->head_l[i]);
+
+        while(tmp != NULL){
+            insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+            tmp = get_next_l(tmp);
+        }
+    }
+
+    for(i = 1; i <= dimension; i++){
+        Cell *tmp = get_next_l(mat2->head_l[i]);
+        Cell *res = get_next_l(result->head_l[i]);
+        
+        if(res == NULL){
+            while(tmp != NULL){
+                insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+                tmp = get_next_l(tmp);
+            }
+        }else{
+            int flag = 0;
+            while(tmp != NULL){
+                Cell *res = get_next_l(result->head_l[i]);
+                while(res != NULL){
+                    if(get_line(res) == get_line(tmp) && get_column(res) == get_column(tmp)){
+                        info_t info = get_info(tmp) + get_info(res);
+                        set_info(res, info);
+                       flag++;
+                    }
+                    res = get_next_l(res);
+                }
+
+                if(flag != 1){
+                    insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+                }
+                flag = 0;
+                tmp = get_next_l(tmp);
+            }
+        }
+    }
+
+    return result;
+}
+
+// Matrix *sun(Matrix *mat1, Matrix *mat2){
+//     int i;
+//     int dimension =  mat1->dimension;
+//     Matrix *result = create_header(dimension);
+//     for(i = 1; i <= dimension; i++){
+
+//         Cell *tmp = get_next_l(mat1->head_l[i]);
+//         Cell *tmp2 = get_next_l(mat2->head_l[i]);
+//         if(tmp == NULL || tmp2 == NULL){
+
+//             if(tmp != NULL && tmp2 == NULL){
+//                 while (tmp != NULL){
+//                     insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+//                     tmp = get_next_l(tmp);
+//                 }
+//             }
+
+//             if(tmp == NULL && tmp2 != NULL){
+//                 while (tmp2 != NULL){
+//                     insert_mat(result, get_line(tmp2), get_column(tmp2), get_info(tmp2));
+//                     tmp2 = get_next_l(tmp2);
+//                 }
+//             }
+
+//         }else{
+
+//             while(tmp != NULL && tmp2 != NULL){
+//                 if(get_line(tmp) == get_line(tmp) && get_column(tmp) == get_column(tmp)){
+//                     insert_mat(result, get_line(tmp), get_column(tmp), (get_info(tmp) + get_info(tmp2)));
+//                 }else{
+//                     insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+//                     insert_mat(result, get_line(tmp2), get_column(tmp2), get_info(tmp2));
+//                 }
+//                 tmp = get_next_l(tmp);
+//                 tmp2 = get_next_l(tmp2);
+//             }   
+
+//             // if(get_next_l(tmp) != NULL || get_next_l(tmp2) != NULL){
+
+                
+//             // }
+
+//             if(get_next_l(tmp) != NULL && get_next_l(tmp2) == NULL){
+//                 while (tmp != NULL){
+//                     insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+//                     tmp = get_next_l(tmp);
+//                 }
+//             }
+
+//             if(get_next_l(tmp) == NULL && get_next_l(tmp2) != NULL){
+//                 while (tmp2 != NULL){   
+//                     insert_mat(result, get_line(tmp2), get_column(tmp2), get_info(tmp2));
+//                     tmp2 = get_next_l(tmp2);
+//                 }
+//             }
+
+//                 // if(get_next_l(tmp) != NULL && get_next_l(tmp2) != NULL){
+//                 //     while(tmp != NULL){
+//                 //         insert_mat(result, get_line(tmp), get_column(tmp), get_info(tmp));
+//                 //         tmp = get_next_l(tmp);
+//                 //     }
+
+//                 //     while(tmp2 != NULL){
+
+//                 //         insert_mat(result, get_line(tmp2), get_column(tmp2), get_info(tmp2));
+
+//                 //         tmp2 = get_next_l(tmp2);
+//                 //     }
+//                 // }
+
+//         }
+//     }
+
+//     return result;
+// }

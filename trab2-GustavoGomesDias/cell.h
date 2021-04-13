@@ -1,7 +1,7 @@
 #ifndef __cell_h__
 #define __cell_h__
 
-typedef double info_t;
+typedef float info_t;
 
 typedef struct Cell Cell;
 
