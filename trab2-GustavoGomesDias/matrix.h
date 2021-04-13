@@ -9,7 +9,7 @@ typedef struct Matrix Matrix;
 Matrix *create_header(int dimension);
 
 // l = linha e c = coluna
-Matrix *insert_lineM(Matrix *mat,int line, int ccolumn, info_t info);
+Matrix *insert_lineM(Matrix *mat,int line, int column, info_t info);
 
 Matrix *insert_columnM(Matrix *mat, int line, int column, info_t info);
 
