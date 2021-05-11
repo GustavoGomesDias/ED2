@@ -1,10 +1,5 @@
 # Eestrutura de Dados
 ## Repositório contendo os exercícios do meu semestre em ED, que é baseado em C.
 
-* [Lista 1](https://github.com/GustavoGomesDias/ED2/tree/main/Lista1-GustavoGomesDias)
-* [Lista 2](https://github.com/GustavoGomesDias/ED2/tree/main/Lista2-GustavoGomesDias)
-* [Lista 3](https://github.com/GustavoGomesDias/ED2/tree/main/Lista3-GustavoGomesDias)
-* [Lista 4](https://github.com/GustavoGomesDias/ED2/tree/main/Lista4-GustavoGomesDias) - Não terminei :(
-* [Lista 5](https://github.com/GustavoGomesDias/ED2/tree/main/Lista5-GustavoGomesDias)
-* [Lista 6](https://github.com/GustavoGomesDias/ED2/tree/main/Lista6-GustavoGomesDias)
-* [Trabalho 1](https://github.com/GustavoGomesDias/ED2/tree/main/Trab1-GustavoGomesDias)
+## Passei ✔
+Aqui tem listas (simplesmente ligadas e duplamente ligadas, com e sem cabeçalho, entre outros), pilhas, filas, ponteiros voids, entre outros.
